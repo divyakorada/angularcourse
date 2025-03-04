@@ -1,0 +1,7 @@
+<p>The Shortner url is not working properly so we used pipe instead of it.</p>
+<input type="text"  placeholder="Enter the Link Here" #longurl [(ngModel)]="yes"/>
+<button type="button" (click)="getUrl()">Shortner</button>
+<p>{{urlPath | shortUrl}}</p>
+
+<!-- https://urlbae.com/api/account
+https://urlbae.com/developers -->

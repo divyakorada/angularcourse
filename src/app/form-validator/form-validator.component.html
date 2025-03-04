@@ -1,0 +1,123 @@
+
+<h1>Form Validation</h1>
+<div class="form-validation__wrapper">
+    <div class="form-validation__left">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-validation__form">
+        <div class="form-validation__row">
+            <label>ID</label>
+            <input nz-input type="text" formControlName="id" [ngClass]="{'invalid': this.submit && loginForm.controls.id.errors}"/>
+            <div *ngIf="this.submit && loginForm.controls.id.errors?.['required']" class="invalid-text">
+                <span>This is Required</span>
+            </div>
+        </div>
+        <div class="form-validation__row">
+            <label>Name</label>
+            <input nz-input type="text" formControlName="name" [ngClass]="{'invalid': this.submit && loginForm.controls.name.errors}"/>
+           
+            <div *ngIf="loginForm.controls.name.touched" class="invalid-text">
+                <span *ngIf="loginForm.controls?.['name'].errors?.['required']">This is Required</span>
+                <span *ngIf="loginForm.controls?.['name'].errors?.['minlength']">Characer lentgth 5 needed</span>
+            </div>
+        </div>
+        <div class="form-validation__row">
+            <label>userName</label>
+            <input nz-input type="text" formControlName="userName"  [ngClass]="{'invalid': this.submit && loginForm.controls.userName.errors}"/>
+            <div *ngIf="this.submit && loginForm.controls.userName.errors"  class="invalid-text">
+                <span *ngIf="loginForm.controls?.['userName'].errors?.['required']">This is Required</span>
+                <span *ngIf="loginForm.controls?.['userName'].errors?.['maxlength']">Maximum Char Limit 10 needed</span>
+                <span *ngIf="loginForm.controls?.['userName'].errors?.['minlength']">Minimum Char Limit 5 needed</span>
+            </div>
+        </div>
+        <div class="form-validation__row">
+            <label>Email</label>
+            <input nz-input type="text" formControlName="email"  [ngClass]="{'invalid': this.submit && loginForm.controls.email.errors}"/>
+            <div *ngIf="this.submit && loginForm.controls.email.errors"  class="invalid-text">
+                <span *ngIf="loginForm.controls?.['email'].errors?.['required']">This is Required</span>
+                <span *ngIf="loginForm.controls?.['email'].errors?.['email']">Email is invalid</span>
+                <span *ngIf="loginForm.controls?.['email'].hasError?.('pattern')">Your Email conains number as well</span>
+            </div>
+            loginForm.valid: {{loginForm.controls.email.valid}}
+            loginForm.hasError: {{loginForm.controls.email.hasError('pattern')}}
+        </div>
+        <div class="form-validation__row">
+            <label>Phone</label>
+            <input nz-input type="text" formControlName="phone"  [ngClass]="{'invalid': this.submit && loginForm.controls.phone.errors}"/>
+            <div *ngIf="this.submit && loginForm.controls.phone.errors" class="invalid-text">
+                <span *ngIf="loginForm.controls?.['phone'].errors?.['required']">This is Required</span>
+                <span *ngIf="loginForm.controls?.['phone'].hasError?.('pattern')">Only numbers allowed</span>
+            </div>
+        </div>
+        <!-- <div class="form-validation__row">
+            <label>Website</label>
+            <input nz-input type="text" formControlName="Website"/>
+        </div> -->ś
+
+        <div class="form-validation__row">
+            <label>Password</label>
+            <input nz-input type="text" formControlName="password"  [ngClass]="{'invalid': this.submit && loginForm.controls.password.errors}"/>
+            <div *ngIf="this.submit && loginForm.controls.password.errors" class="invalid-text">
+                <span *ngIf="loginForm.controls?.['password'].errors?.['required']">This is Required</span>
+                <span *ngIf="loginForm.controls?.['password'].hasError?.('pattern')">Only numbers allowed</span>
+            </div>
+        </div>
+
+        <div class="form-validation__row">
+            <label>confirmPassword</label>
+            <input nz-input type="text" formControlName="confirmPassword"  [ngClass]="{'invalid': this.submit && loginForm.controls.confirmPassword.errors}"/>
+            <div *ngIf="this.submit && loginForm.controls.confirmPassword.errors" class="invalid-text">
+                <span *ngIf="loginForm.controls?.['confirmPassword'].errors?.['required']">This is Required</span>
+                <span *ngIf="loginForm.controls?.['confirmPassword'].errors?.['MustMatch']">Password didn't match</span>
+            </div>
+        </div>
+
+
+        <div class="form-validation__row check">
+            <input type="checkbox" formControlName="acceptTerms" [ngClass]="{'invalid': this.submit && loginForm.controls.acceptTerms.errors}"/>
+            <label for="acceptTerms" class="invalid-text">I have read and agree to the Terms</label>
+           
+            <div *ngIf="this.submit && loginForm.controls.acceptTerms.errors" class="invalid-text">
+                {{loginForm.controls.acceptTerms.errors | json}}
+                <span>Accept Terms is required</span>
+            </div>
+        </div>
+        <div class="form-validation__row form-validation__butns">
+            <button nz-button (click)="loginFormSumbit()">Register</button>
+            <button nz-button (click)="reset()">Reset</button>
+        </div>
+    </form>
+</div>
+
+<div class="form-validation__right">
+<table class="form-validation__table">
+    <thead>
+        <th style="width: 40px;">Id</th>
+        <th>Name</th>
+        <th style="width: 180px;">User Name</th>
+        <th style="width: 200px;">Email</th>
+        <th style="width: 200px;">Phone</th>
+        <th style="width: 180px;">Website</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of userData">
+            <td>{{row.id}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.username}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.phone}}</td>
+            <td>{{row.website}}</td>
+            <td><button nz-button nzType="primary" (click)="onEdit(row.id)">Edit</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+
+
+    
+
+
+
+<!-- https://www.youtube.com/watch?v=dlNY-eQOZ5s -->
+<!-- https://stackblitz.com/edit/angular-12-form-validation?file=src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fapp.component.html -->
+<!-- https://www.digitalocean.com/community/tutorials/angular-custom-validation -->

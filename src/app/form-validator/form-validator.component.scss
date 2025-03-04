@@ -1,0 +1,52 @@
+:host {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // height: 400px;
+   // overflow: auto;
+    margin: 20px;
+    display: block;
+}
+.form-validation {
+    &__wrapper {
+        display: flex;
+    }
+    &__left {
+        background: rgb(155, 207, 238);
+        padding: 20px 40px;
+        margin-right: 20px;
+    }
+    &__right {
+        background: rgb(217, 243, 173);
+        padding: 20px;
+    }
+    &__row {
+        margin-bottom: 10px;
+        &.check {
+            input[type="checkbox"] {
+                margin-right: 10px;
+            }
+          
+        }
+    }
+    &__butns {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__table {
+        th {
+            text-align: left;
+        }
+    }
+    &__form {
+        width: 25rem;
+    }
+}
+
+.invalid {
+    border: 1px solid red;
+}
+.invalid ~ .invalid-text {
+    color: red;
+}

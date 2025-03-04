@@ -1,0 +1,42 @@
+<div class="star__container">
+    <span *ngFor="let star of stars">
+        <i class="fa fa-star" (click)="updateRatingValue(star)" [ngClass]="{'active': star <= selectedRating}"></i>
+    </span>
+</div>
+
+<div class="star__container second-design">
+    <span *ngFor="let icon of starRating">
+        <i class="fa fa-star"
+        (mouseenter)="handleMouseEnter(icon)"
+        [ngClass]="{active: selectedStar >= icon}"
+        (mouseleave)="handleMouseLeave()"
+        (click)="getRatingNumber(icon)"
+        ></i>
+    </span>
+
+    <h2>{{finalRating}}</h2>
+    <h2>Rating from {{numberOfUsers}} users</h2>
+</div>
+
+<div class="star__container third-design" [class.readonly]="readOnly">
+        <fa-icon
+        [class.rated]="rating>=5" 
+        [icon]="faStar" (click)="setRating(5)"></fa-icon>
+
+        <fa-icon
+        [class.rated]="rating>=4"
+        [icon]="faStar" (click)="setRating(4)"></fa-icon>
+
+        <fa-icon 
+        [class.rated]="rating>=3"
+        [icon]="faStar" (click)="setRating(3)"></fa-icon>
+
+        <fa-icon
+        [class.rated]="rating>=2"
+        [icon]="faStar" (click)="setRating(2)"></fa-icon>
+        
+        <fa-icon
+        [class.rated]="rating>=1"
+        [icon]="faStar" (click)="setRating(1)"></fa-icon>
+</div>
+

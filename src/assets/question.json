@@ -1,0 +1,105 @@
+{
+    "questions": [
+      {
+        "numb": 1,
+        "question": "What does HTML stand for?",
+        "answer": "Hyper Text Markup Language",
+        "options": [
+          {
+            "text": "Hyper Text Preprocessor"
+          },
+          {
+            "text": "Hyper Text Markup Language",
+            "isCorrect": true
+          },
+          {
+            "text": "Hyper Text Multiple Language"
+          },
+          {
+            "text": "Hyper Tool Multi Language"
+          }
+        ]
+      },
+      {
+        "numb": 2,
+        "question": "What does CSS stand for?",
+        "answer": "Cascading Style Sheet",
+        "options": [
+          {
+            "text": "Common Style Sheet"
+          },
+          {
+            "text": "Colorful Style Sheet"
+          },
+          {
+            "text": "Computer Style Sheet"
+          },
+          {
+            "text": "Cascading Style Sheet",
+            "isCorrect": true
+          }
+        ]
+      },
+      {
+        "numb": 3,
+        "question": "What does PHP stand for?",
+        "answer": "Hypertext Preprocessor",
+        "options": [
+          {
+            "text": "Hypertext Preprocessor",
+            "isCorrect": true
+          },
+          {
+            "text": "Hypertext Programming"
+          },
+          {
+            "text": "Hypertext Preprogramming"
+          },
+          {
+            "text": "Hometext Preprocessor"
+          }
+        ]
+      },
+      {
+        "numb": 4,
+        "question": "What does SQL stand for?",
+        "answer": "Structured Query Language",
+        "options": [
+          {
+            "text": "Stylish Question Language"
+          },
+          {
+            "text": "Stylesheet Query Language"
+          },
+          {
+            "text": "Statement Question Language"
+          },
+          {
+            "text": "Structured Query Language",
+            "isCorrect": true
+          }
+        ]
+      },
+      {
+        "numb": 5,
+        "question": "What does XML stand for?",
+        "answer": "eXtensible Markup Language",
+        "options": [
+          {
+            "text": "eXtensible Markup Language",
+            "isCorrect": true
+          },
+          {
+            "text": "eXecutable Multiple Language"
+          },
+          {
+            "text": "eXTra Multi-Program Language"
+          },
+          {
+            "text": "eXamine Multiple Language"
+          }
+        ]
+      }
+    ]
+  }
+  

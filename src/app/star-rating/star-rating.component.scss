@@ -1,0 +1,62 @@
+:host {
+    height: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 100px
+}
+.star {
+    &__container {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    margin-bottom: 49px;
+    text-align: center;
+    .fa {
+        font-size: 24px;
+        margin: 0 10px;
+        cursor: pointer;
+        color: #b6b6b6;
+        // &:hover{
+        //     color: #ffbe6f;
+        // }
+        &.active {
+            color: #ffbe6f;
+        }
+    }
+    &.second-design {
+        text-align: center;
+    }
+    }
+}
+
+
+
+.third-design {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    fa-icon{
+        font-size: 30px;
+        cursor: pointer;
+        color: gray;
+        &.rated, &:hover, &:hover ~ fa-icon {
+            color: orange;
+        }
+    }
+    &.readonly {
+        fa-icon {
+            cursor: default;
+            &:hover:not(.rated), 
+            &:hover ~ fa.icon:not(.rated) {
+                color: gray;
+            }
+        }
+    }
+}

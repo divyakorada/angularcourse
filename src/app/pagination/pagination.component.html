@@ -1,0 +1,20 @@
+<h2>Pagination</h2>
+<div *ngFor="let d of myData" class="pagination__list">{{d.id}}</div>
+
+<div class="pagination__wrapper">
+    <div>
+        <ng-container *ngFor="let page of setPageNumbers()">
+            <button (click)="onPageChange(page)" [class.active]="page === selectedPage">{{page}}</button>
+        </ng-container>
+    </div>
+    <select (change)="changePageSize($event)" [value]="recordsPerPage" class="pagination__select">
+        <option value="4">4 Per Page</option>
+        <option value="8">8 Per Page</option>
+        <option value="12">12 Per Page</option>
+        <option value="16">16 Per Page</option>
+        <option value="20">20 Per Page</option>
+    </select>
+</div>
+
+
+<!-- https://stackblitz.com/edit/angular-rpgakf?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fapp.module.ts -->

@@ -1,0 +1,43 @@
+<div class="gs__main-wrapper">
+  <h1 class="gs__main-wrapper-head-wrapper flex">
+    <div class="gs__main-wrapper-head">
+      <span>Todo List</span>
+      <span nz-icon nzType="edit" nzTheme="outline"></span>
+    </div>
+    <label nz-checkbox class="gs__main-wrapper-selectall" [disabled]="selectAllDisabled" [(ngModel)]="selectAll" (ngModelChange)="selectAllListItems()">Select All</label>
+  </h1>
+  <div class="gs__main-input-ctn flex">
+    <input nz-input placeholder="Things you want to do today?"  type="text" [(ngModel)]="newTodo" name="nameInput" />
+    <button nz-button nzType="primary" (click)="addList()" #myBtn>Add</button>
+  </div>
+
+<div class="gs__list-wrapper">
+  <ul class="gs__list-container">
+    <li *ngFor="let todo of todos; index as i" class="flex">
+      <div class="gs__list-container-left-hand">
+        <label nz-checkbox [(ngModel)]="todo.isChecked" (ngModelChange)="selectSingleListItem(todo.isChecked)"></label>
+        <span *ngIf="!todo.editing" [ngClass]="{'cross-line' : todo.isChecked}">{{ todo.task }}</span>
+        <input nz-input placeholder="Things you want to do today?"  type="text" *ngIf="todo.editing" [(ngModel)]="todo.task" name="editInput" />
+      </div>
+      <div class="gs__list-container-action-btn">
+        <button nz-button nzType="primary" (click)="edit(i)" [disabled]="todo.isChecked">
+          {{ todo.editing ? 'Save' : 'Edit' }}
+          <span nz-icon nzType="edit" nzTheme="outline"></span>
+        </button>
+        <button nz-button nzType="primary" nzDanger (click)="delete(i)">
+          Delete
+          <span nz-icon nzType="delete" nzTheme="outline"></span>
+        </button>
+      </div>
+    </li>
+    <div class="gs__showalltask-completed" *ngIf="!todos.length">Yeh! All task has been completed. <span nz-icon nzType="smile" nzTheme="fill"></span></div>
+  </ul>
+</div>
+
+<div class="gs__uncompleted-count">{{uncompletedTask?.length}} uncompleted tasks</div>
+<div class="gs__show-banner" *ngIf="singleCheckbox || selectAll">
+  <button (click)="clearCompletedTasks()">Clear Completed</button>
+  <p class="gs__show-banner-info">You have selected {{showSelectedListItemCount.length}} items.</p>
+</div>
+<div *ngIf="repeatedListItem">This item is already in your todo list.</div>
+</div>

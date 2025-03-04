@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./../node_modules/ng-zorro-antd/ng-zorro-antd.min.css";
+@import "./../node_modules/ng-zorro-antd/ng-zorro-antd.min.css"; /* Import base styles */
+@import "./../node_modules/ng-zorro-antd/button/style/index.min.css";  /* Import one component's styles */
+//@import './../node_modules/bootstrap/dist/css/bootstrap.css';
+
+  :root {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    //font-size: 10px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+   // font-size: 1.4rem;
+  //  display: flex;
+  //  align-items: center;
+  //  justify-content: center;
+  //  background: #fff;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+  .active {
+    svg {
+        color: #fff;
+    }
+}
+.ant-drawer-body {
+  display: flex;
+  flex-direction: column;
+}

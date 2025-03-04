@@ -1,0 +1,44 @@
+
+
+.currency {
+    &__wrapper {
+        width: 25%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 20px 40px;
+        box-shadow: 0px 2px 5px 2px #e5e5e5;
+        border-width: 5px 1px 1px 1px;
+        border-color: #1890ff #ccc4 #ccc4 #ccc4;
+        border-style: solid;
+    }
+    &__row {
+        margin: 20px 0;
+        &-item {
+            display: flex;
+            flex-direction: column;
+           
+            nz-select {
+                width: 130px;
+            }
+        }
+    }
+    &__row-item-img {
+        width: 35px;
+    }
+    &__bidirectional {
+        font-size: 28px;
+        cursor: pointer;
+        align-self: end;
+    }
+    &__show-result {
+        text-align: center;
+    }
+    &__convert {
+        button {
+            width: 100%;
+        }
+    }
+}

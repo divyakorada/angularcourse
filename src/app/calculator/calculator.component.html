@@ -1,0 +1,58 @@
+
+<div class="calc__wrapper">
+    <div class="calc__show-result-container">
+        <div class="calc__number calc__show-result">
+            {{ expression }}
+        </div>
+        <div class="calc__number calc__show-result"> {{calculateResult()}} </div>
+    </div>
+    <div class="calc__number" (click)="getNumber('AC')">AC</div>
+    <div class="calc__number" (click)="removeLast()">
+        <span nz-icon nzType="close-square" nzTheme="outline"></span>
+    </div>
+    <div class="calc__number" (click)="getNumber('%')">%</div>
+    <div class="calc__number" (click)="getNumber('/')">/</div>
+    <div class="calc__number" (click)="getNumber(7)">7</div>
+    <div class="calc__number" (click)="getNumber(8)">8</div>
+    <div class="calc__number" (click)="getNumber(9)">9</div>
+    <div class="calc__number" (click)="getNumber('*')">*</div>
+    <div class="calc__number" (click)="getNumber(4)">4</div>
+    <div class="calc__number" (click)="getNumber(5)">5</div>
+    <div class="calc__number" (click)="getNumber(6)">6</div>
+    <div class="calc__number" (click)="getNumber('-')">-</div>
+    <div class="calc__number" (click)="getNumber(1)">1</div>
+    <div class="calc__number" (click)="getNumber(2)" #one>2</div>
+    <div class="calc__number" (click)="getNumber(3)">3</div>
+    <div class="calc__number" (click)="getNumber('+')">+</div>
+    <div class="calc__number calc__number-last-row" (click)="getNumber(0)">0</div>
+    <div class="calc__number" (click)="getNumber('.')">.</div>
+    <div class="calc__number" (click)="getNumber('=')">=</div>
+</div>
+
+
+<div class="calculator">
+    <div class="calculator__output" *ngIf="!currentValue">0</div>
+    <div class="calculator__output" *ngIf="currentValue">{{currentValue}}</div>
+    <div class="calculator__keys">
+      <button class="calculator__key calculator__key--operator" (click)="getValue('+')">+</button>
+      <button class="calculator__key calculator__key--operator" (click)="getValue('-')">-</button>
+      <button class="calculator__key calculator__key--operator" (click)="getValue('*')">&times;</button>
+      <button class="calculator__key calculator__key--operator" (click)="getValue('%')">÷</button>
+      <button class="calculator__key" (click)="getValue('7')">7</button>
+      <button class="calculator__key" (click)="getValue('8')">8</button>
+      <button class="calculator__key" (click)="getValue('9')">9</button>
+      <button class="calculator__key" (click)="getValue('4')">4</button>
+      <button class="calculator__key" (click)="getValue('5')">5</button>
+      <button class="calculator__key" (click)="getValue('6')">6</button>
+      <button class="calculator__key" (click)="getValue('1')">1</button>
+      <button class="calculator__key" (click)="getValue('2')">2</button>
+      <button class="calculator__key" (click)="getValue('3')">3</button>
+      <button class="calculator__key" (click)="getValue('0')">0</button>
+      <button class="calculator__key" (click)="back()"><span nz-icon nzType="close-square" nzTheme="outline"></span></button>
+      <button class="calculator__key" (click)="clearAll()">AC</button>
+      <button class="calculator__key calculator__key--enter" (click)="calculateRes()">=</button>
+    </div>
+  </div>
+
+<!-- name="one" ngDefaultControl  [(ngModel)]="getNumberValue" 
+    <input type="text" [(ngModel)] = "yes" (click)="inputValue(yes)"/> -->

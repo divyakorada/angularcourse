@@ -1,0 +1,40 @@
+<div class="weather__wrapper">
+    <h1>Weather App</h1>
+
+    <form #myForm="ngForm" (submit)="onSubmit()" class="weather__enter-city">
+        <input nz-input type="text" placeholder="Enter city name" name="cityNme" [(ngModel)]="city"/>
+        <!-- <button (click)="getWeather()">GetWeather Data</button> -->
+    </form>
+        <h4>Current weather and forecasts in your city</h4>
+    <img [src]="iconURL"/>
+    <div class="weather__row">
+        <label>Summary:</label>
+        <span> {{summary}}</span>
+    </div>
+    <div class="weather__row">
+        <label>Temparature:</label>
+        <span> {{temparature}}</span>
+    </div>
+    <div class="weather__row">
+        <label>Fells like:</label>
+        <span> {{fellsLike}}</span>
+    </div>
+    <div class="weather__row">
+        <label>Pressure:</label>
+        <span> {{pressure}}</span>
+    </div>
+    <div class="weather__row">
+        <label>Humidity:</label>
+        <span> {{humidity}}</span>
+    </div>
+
+    <!-- <p>Summary: {{summary}}</p>
+    <p>Temparature: {{temparature}}</p>
+    <p>Fells like: {{fellsLike}}</p>
+    <p>Pressure: {{pressure}}</p>
+    <p>Humidity: {{humidity}} </p> -->
+</div>
+
+
+<!-- https://www.youtube.com/watch?v=8K71q5GPj5E -->
+<!-- https://www.youtube.com/watch?v=psZXU8PTAS8&t=1739s -->

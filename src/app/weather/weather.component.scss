@@ -1,0 +1,41 @@
+:host {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.weather {
+    &__wrapper {
+        background-color: #dfdf8d;
+        width: 500px;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 2px 2px 2px #ccc;
+        text-align: center;
+        font-size: 18px;
+        h1 {
+            margin-bottom: 20px;
+            color: #6b9841;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+    }
+    &__row {
+        label {
+            text-align: right;
+            width: 46%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        span {
+            display: inline-block;
+            width: 50%;
+            text-align: left;
+            font-weight: 500;
+        }
+    }
+    &__enter-city {
+        margin-bottom: 20px;
+    }
+}

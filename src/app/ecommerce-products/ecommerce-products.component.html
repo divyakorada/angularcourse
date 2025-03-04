@@ -1,0 +1,139 @@
+<div class="gs__main-wrapper">
+    <header class="gs__header-wrapper">
+        <div class="gs__container flex">
+            <h2 class="gs__header">Products</h2>
+            <button nz-icon nzType="shopping-cart" nzTheme="outline" class="gs__cartctn">
+                <span class="cart-value">{{cartItems.length}}</span>
+            </button>
+    </div>
+    </header>
+
+    <section class="gs__product-container">
+        <div class="gs__container gs__container-pdtotal display-flex">
+        <div class="gs__product-container-left">
+            <input nz-input placeholder="Search" [(ngModel)]="searchString" type="text" (ngModelChange)="searchProduct()"/>
+            <div class="gs__product-category">
+                <h3>Category</h3>
+                <ul class="gs__product-category-list">
+                    <li *ngFor="let Category of categories; index as i" (click)="getCategoryName(Category, i)" 
+                    [ngClass]="{'active' : selectedIndex === i }">
+                    <span>{{Category}}</span></li>
+                </ul>
+            </div>
+
+            <div class="gs__product-category">
+                <h3>Company</h3>
+                <nz-select class="gs__product-category-selectbox" [(ngModel)]="company" (ngModelChange)="selectCompany(company)">
+                    <nz-option *ngFor="let option of companies" nzValue="{{option}}" nzLabel="{{option}}"></nz-option>
+                    <!-- <nz-option nzValue="all" nzLabel="all"></nz-option>
+                    <nz-option nzValue="marcos" nzLabel="marcos"></nz-option>
+                    <nz-option nzValue="liddy" nzLabel="liddy"></nz-option>
+                    <nz-option nzValue="ikea" nzLabel="ikea"></nz-option>
+                    <nz-option nzValue="caressa" nzLabel="caressa"></nz-option> -->
+                  </nz-select>
+            </div>
+
+            <div class="gs__product-category">
+                <h3>Price</h3>
+                <!-- <p #showPrice>Rs. {{price}}</p>
+                <input type="range" name="price" min="0" max="309999" value="309999" (change)="shippingFree($event)"> -->
+                <p>{{'Rs. ' + price}}</p>
+                <nz-slider [nzMin]="" [nzMax]="309999" [(ngModel)]="price" (ngModelChange)="changePrice(price)"></nz-slider>
+            </div>
+            <div class="gs__product-category-free-shipping">
+                <p>Free Shipping</p>
+                <label nz-checkbox [(ngModel)]="freeShipping" (ngModelChange)="checkFreeShipping(freeShipping)"></label>
+            </div>
+            <div class="gs__product-category">
+            <button nz-button nzType="primary" (click)="clearFliters()">Clear Filters</button>
+        </div>
+        </div>
+        <div class="gs__product-container-right">
+
+            <div class="gs__product-container-right-topheader">
+                <div class="gs__product-container-right-iconctn">
+                 <button nz-icon nzType="appstore" nzTheme="outline" [ngClass]="{'active': !typeActive}" (click)="toggleView(false)"></button>
+                 <button nz-icon nzType="bars" nzTheme="outline" [ngClass]="{'active': typeActive}" (click)="toggleView(true)"></button>
+                </div>
+                <span>{{products && products.length}} Products found</span>
+                <hr>
+                <span>Sort By </span>
+                <nz-select class="gs__product-container-right-selectbox" [(ngModel)]="sortBy" (ngModelChange)="sortByProducts()">
+                    <nz-option *ngFor="let option of sorting" nzValue="{{option}}" nzLabel="{{option}}"></nz-option>
+                </nz-select>
+            </div>
+
+            <div class="gs__product-container-right-products" [ngClass]="{'list-view': typeActive}" >
+                <ng-container *ngIf="products && products.length > 0; else noProducts">
+                <div class="gs__product-container-right-products-container" *ngFor="let product of products; index as i">
+                    <div class="gs__product-container-right-product-item">
+                        <div class="gs__product-container-right-product-img-wrapper">
+                            <img [src]="product.image" alt="product.name" class="gs__product-container-right-product-img"/>
+                            <div class="gs__product-container-right-product-overlay-icons">
+                                <button nz-button nzType="primary" nzShape="circle" [nzSize]="size">
+                                    <span nz-icon nzType="search"></span>
+                                </button>
+                                <button nz-button nzType="primary" nzShape="circle" [nzSize]="size" (click)="openDrawer(product, i)">
+                                    <span nz-icon nzType="shopping-cart"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <footer class="gs__product-container-right-footer">
+                            <h3>{{product.name}}</h3>
+                            <span class="gs__product-container-right-footer-price">{{product.price}}</span>
+                        </footer>
+                    </div>
+
+                    <div class="gs__product-container-right-products-details">
+                        <h2>{{product.name}}</h2>
+                        <p class="gs__product-container-right-footer-price">{{product.price}}</p>
+                        <p class="gs__product-container-right-footer-description">{{product.description}}</p>
+                        <button nz-button nzType="primary">Details</button>
+                    </div>
+                    
+                </div>
+            </ng-container>
+            <ng-template #noProducts>
+                <h2 class="gs__product-container-right-noproducts">Sorry, no products matched your search.</h2>
+            </ng-template>
+            </div>
+        </div>
+    </div>
+    </section>
+
+</div>
+<nz-drawer
+      [nzClosable]="false"
+      [nzVisible]="visible"
+      nzPlacement="right"
+      nzTitle="Cart Items"
+      (nzOnClose)="close()">
+
+    <ng-container *nzDrawerContent >
+        <h3 class="gs__cart-clear-all" (click)="clearAllCartItems()">Clear all</h3>
+        <ul class="gs__cart-wrapper">
+            <li class="flex gs__cart-list-item" *ngFor="let cartItem of cartItems; index as i">
+                <section class="flex gs__cart-list-item-right-hand flex">
+                    <img [src]="cartItem.image"/>
+                    <div class="gs__cart-list-item-detls">
+                        <h3>{{cartItem.name}}</h3>
+                        <p>Rs. {{cartItem.price}}</p>
+                        <span (click)="removeCartItem(i)">Remove</span>
+                    </div>
+                </section>
+              
+                <section>
+                    <span nz-icon nzType="up" nzTheme="outline" (click)="cartItemIncrement(i)"></span>
+                    <p>{{cartItem.count}}</p>
+                    <span nz-icon nzType="down" nzTheme="outline" (click)="cartItemdecrement(i)"></span>
+                </section>
+            </li>
+        </ul>
+
+        <section class="gs__cart-bottom-dtls">
+            <p class="gs__cart-bottom-dtls-total">Total: Rs. {{cartTotal}}</p>
+            <button nz-button nzType="primary">Checkout</button>
+         </section>
+       
+      </ng-container>
+      </nz-drawer>
